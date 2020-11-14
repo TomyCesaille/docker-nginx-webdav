@@ -5,7 +5,7 @@ Inspired from <https://github.com/sashgorokhov/docker-nginx-webdav> but re-desig
 
 ## Design
 
-This docker image is designed to be dead simple. The security matter (`htaccess` or whatever) is thought to be implemented under the host reverse proxy. This is why the docker-compose bind to `127.0.0.1`.
+This docker image is designed to be dead simple. The security matter (`htaccess` or whatever) is thought to be implemented under the host reverse proxy. This is why the docker-compose binds to `127.0.0.1`.
 
 ## How to use
 
