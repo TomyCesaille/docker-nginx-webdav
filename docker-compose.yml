@@ -1,11 +1,15 @@
-version: '2'
+version: "3"
+
 services:
   webdav:
     build: .
     ports:
-      - "80:80"
+      - "127.0.0.1:18088:80"
     volumes:
-      - "/mnt:/media"
-    environment:
-      USERNAME: user
-      PASSWORD: passwd
+      - "C:/temp:/media"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "10"
+    restart: unless-stopped

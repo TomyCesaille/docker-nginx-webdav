@@ -1,29 +1,19 @@
-# Supported tags and respective `Dockerfile` links
+## docker-nginx-webdav
 
--	[`latest` (*Dockerfile*)](https://github.com/sashgorokhov/docker-nginx-webdav/blob/master/Dockerfile)
+Simple WebDAV server dockerized using debian & nginx.  
+Inspired from <https://github.com/sashgorokhov/docker-nginx-webdav> but re-designed and updated.
 
-[![](https://badge.imagelayers.io/sashgorokhov/webdav:latest.svg)](https://imagelayers.io/?images=sashgorokhov/webdav:latest 'Get your own badge on imagelayers.io')
+## Design
 
-# How to use this image
+This docker image is designed to be dead simple. The security matter (`htaccess` or whatever) is thought to be implemented under the host reverse proxy. This is why the docker-compose bind to `127.0.0.1`.
 
-```console
-$ docker run --name webdav -p 80:80 -v /media:/media -d sashgorokhov/webdav
-```
-This will start a webdav server listening on the default port of 80.
-Then access it via `http://localhost:80` or `http://host:80` in a browser.
+## How to use
 
-This server will serve files located in your /media folder
-
-Image's supported volumes:
-- `/media` - served directory
-
-To restrict access to only authorized users, you can define two environment variables: `USERNAME` and `PASSWORD`
-```console
-$ docker run --name webdav -p 80:80 -v /media:/media -e USERNAME=webdav -e PASSWORD=webdav -d sashgorokhov/webdav
+```bash
+docker-compose up --build -d
 ```
 
-# Supported Docker versions
+### Configuration
 
-This image is officially supported on Docker version 1.10.2.
-Support for older versions (down to 1.6) is provided on a best-effort basis.
-Please see [the Docker installation documentation](https://docs.docker.com/installation/) for details on how to upgrade your Docker daemon.
+- Adapt the host volume path in `docker-compose.yml` according to your environment
+- And the host mapped port eventually
